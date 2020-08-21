@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Container, NaveIcon, CloseButton } from "./styles";
+import { NaverIconSmall } from "components/Logo/NaverIconSmall";
+import { Container, CloseButton } from "./styles";
 
 function Toolbar() {
 	return (
 		<Container>
-			<NaveIcon />
+			<NaverIconSmall />
 			<CloseButton>Sair</CloseButton>
 		</Container>
 	);

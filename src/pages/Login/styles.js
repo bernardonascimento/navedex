@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { NaversIcon } from "styles/icons";
-
 export const Container = styled.div`
 	height: 100vh;
 
@@ -20,8 +18,6 @@ export const Card = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
-
-export const NaveIcon = styled(NaversIcon)``;
 
 export const Wrapper = styled.div`
 	display: flex;

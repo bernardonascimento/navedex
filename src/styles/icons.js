@@ -1,1 +1,1 @@
-export { NaversIcon } from "components/NaversIcon";
+export { Delete, Edit, Close } from "styled-icons/material";
