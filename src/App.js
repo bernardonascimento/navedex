@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
+
+import store from "./redux";
+import Routes from "./routes";
+
+import GlobalStyles from "./styles/GlobalStyles";
+
+const createBrowserHistory = require("history").createBrowserHistory;
+export const history = createBrowserHistory();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<GlobalStyles />
+
+			<Provider store={store}>
+				{/* <AuthProvider> */}
+				<Router history={history}>
+					<Routes />
+				</Router>
+				{/* </AuthProvider> */}
+			</Provider>
+		</>
+	);
 }
 
 export default App;
