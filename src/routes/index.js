@@ -6,7 +6,7 @@ import AppRoutes from "./app.routes";
 
 export default (props) => {
 	// const { signed } = useContext(AuthContext);
-	const { signed } = false;
+	const signed = true;
 
 	return <>{signed ? <AppRoutes /> : <AuthRoutes />}</>;
 };

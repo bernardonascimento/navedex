@@ -21,10 +21,7 @@ export const Card = styled.div`
 	align-items: center;
 `;
 
-export const NaveIcon = styled(NaversIcon)`
-	width: 16px;
-	height: 16px;
-`;
+export const NaveIcon = styled(NaversIcon)``;
 
 export const Wrapper = styled.div`
 	display: flex;

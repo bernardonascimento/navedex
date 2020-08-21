@@ -1,6 +1,6 @@
 import React from "react";
 
-export const NaversIcon = () => {
+export const NaversIcon = (props) => {
 	return (
 		<svg
 			width="236"
@@ -8,6 +8,7 @@ export const NaversIcon = () => {
 			viewBox="0 0 236 60"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			{...props}
 		>
 			<path
 				fill-rule="evenodd"
