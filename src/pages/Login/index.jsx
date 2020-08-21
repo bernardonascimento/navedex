@@ -1,12 +1,24 @@
 import React from "react";
 
-// import { Container } from './styles';
+import InputText from "components/InputText";
+import Button from "components/Button";
+
+import { Container, Card, NaveIcon, Wrapper, Form } from "./styles";
 
 function Login() {
 	return (
-		<div>
-			<h1>Login</h1>
-		</div>
+		<Container>
+			<Card>
+				<Wrapper>
+					<NaveIcon />
+					<Form>
+						<InputText label="E-mail" placeholder="E-mail" />
+						<InputText label="Senha" placeholder="Senha" />
+						<Button text="Entrar" />
+					</Form>
+				</Wrapper>
+			</Card>
+		</Container>
 	);
 }
 
