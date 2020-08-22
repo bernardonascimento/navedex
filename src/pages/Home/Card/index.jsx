@@ -12,11 +12,7 @@ import {
 	EditIcon,
 } from "./styles";
 
-function Card({ toggleNaver }) {
-	function handleDelete() {
-		console.log("delete");
-	}
-
+function Card({ toggleNaver, handleClickExclude }) {
 	function handleEdit() {
 		console.log("delete");
 	}
@@ -27,7 +23,7 @@ function Card({ toggleNaver }) {
 			<TextName>Juliano Reis</TextName>
 			<TextCharge>Front-end Developer</TextCharge>
 			<IconWrapper>
-				<DeleteIcon onClick={handleDelete} />
+				<DeleteIcon onClick={handleClickExclude} />
 				<EditIcon onClick={handleEdit} />
 			</IconWrapper>
 		</Container>

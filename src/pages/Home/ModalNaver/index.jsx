@@ -19,11 +19,7 @@ import {
 
 import photo from "../../../assets/photo.jpg";
 
-function ModalNaver({ isOpen, toggleModal }) {
-	function handleDelete() {
-		console.log("delete");
-	}
-
+function ModalNaver({ isOpen, toggleModal, handleClickExclude }) {
 	function handleEdit() {
 		console.log("delete");
 	}
@@ -58,7 +54,7 @@ function ModalNaver({ isOpen, toggleModal }) {
 					</Description>
 
 					<IconWrapper>
-						<DeleteIcon onClick={handleDelete} />
+						<DeleteIcon onClick={handleClickExclude} />
 						<EditIcon onClick={handleEdit} />
 					</IconWrapper>
 				</DataWrapper>
