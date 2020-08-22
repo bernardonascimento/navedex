@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "components/Button";
+import Button from "../../components/Button";
 
 import Card from "./Card";
 import ModalNaver from "./ModalNaver";
@@ -15,11 +15,15 @@ import {
 	Cards,
 } from "./styles";
 
-function Home() {
+function Home({ history }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	function toggleModal(e) {
 		setIsOpen(!isOpen);
+	}
+
+	function handleClick() {
+		history.push("/naver/register");
 	}
 
 	return (
@@ -28,7 +32,7 @@ function Home() {
 				<Header>
 					<Text>Navers</Text>
 					<WrapperButton>
-						<Button text="Adicionar Naver" />
+						<Button text="Adicionar Naver" onClick={handleClick} />
 					</WrapperButton>
 				</Header>
 			</Wrapper>

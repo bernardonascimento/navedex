@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NaverIconSmall } from "components/Logo/NaverIconSmall";
+import { NaverIconSmall } from "../Logo/NaverIconSmall";
 import { Container, CloseButton } from "./styles";
 
 function Toolbar() {

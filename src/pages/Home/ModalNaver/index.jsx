@@ -17,7 +17,7 @@ import {
 	EditIcon,
 } from "./styles";
 
-import photo from "assets/photo.jpg";
+import photo from "../../../assets/photo.jpg";
 
 function ModalNaver({ isOpen, toggleModal }) {
 	function handleDelete() {

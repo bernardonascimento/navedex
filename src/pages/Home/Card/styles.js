@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { Delete, Edit } from "styles/icons";
+import { Delete, Edit } from "../../../styles/icons";
 
 export const Container = styled.div`
 	width: 281px;

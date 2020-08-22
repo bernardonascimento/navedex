@@ -2,8 +2,8 @@ import React from "react";
 
 import { ButtonText } from "./styles";
 
-function Button({ text }) {
-	return <ButtonText>{text}</ButtonText>;
+function Button({ text, ...rest }) {
+	return <ButtonText {...rest}>{text}</ButtonText>;
 }
 
 export default Button;

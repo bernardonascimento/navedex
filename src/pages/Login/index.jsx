@@ -1,9 +1,9 @@
 import React from "react";
 
-import { NaverIconLarge } from "components/Logo/NaverIconLarge";
+import { NaverIconLarge } from "../../components/Logo/NaverIconLarge";
 
-import InputText from "components/InputText";
-import Button from "components/Button";
+import InputText from "../../components/InputText";
+import Button from "../../components/Button";
 
 import { Container, Card, Wrapper, Form } from "./styles";
 

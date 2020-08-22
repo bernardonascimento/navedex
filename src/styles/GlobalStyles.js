@@ -29,14 +29,5 @@ export default createGlobalStyle`
     --primary: #FFFFFF;
     --gray: #212121;
     --placeholder: #9E9E9E;
-
-    /* --secondary: #15181C; */
-    /* --search: #202327; */
-    /* --outline: #2F3336; */
-    /* --retweet: #00C06B; */
-    /* --like: #E8265E; */
-    /* --twitter: #33A1F2; */
-    /* --twitter-dark-hover: #011017; */
-    /* --twitter-light-hover: #2C8ED6; */
   }
 `;

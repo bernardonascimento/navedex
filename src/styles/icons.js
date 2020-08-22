@@ -1,1 +1,1 @@
-export { Delete, Edit, Close } from "styled-icons/material";
+export { Delete, Edit, Close, KeyboardArrowLeft } from "styled-icons/material";
