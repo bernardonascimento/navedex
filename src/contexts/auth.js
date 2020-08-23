@@ -16,7 +16,7 @@ export const AuthProvider = ({ children, history }) => {
 		const resp = await API.post(`users/login`, body);
 		const { data } = resp;
 
-		if (resp.status === 401) return data.message;
+		if (resp.status !== 200) return data;
 
 		setSigned(resp.status === 200 ? true : false);
 		localStorage.setItem("@Navers:token", data.token);

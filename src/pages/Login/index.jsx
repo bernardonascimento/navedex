@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 import { NaverIconLarge } from "../../components/Logo/NaverIconLarge";
 
@@ -26,7 +27,11 @@ function Login() {
 		setDisabled(true);
 
 		const result = await logIn(form);
-		console.log(result);
+
+		if (result.errorCode) {
+			toast.error(result.message);
+			setDisabled(false);
+		}
 	};
 
 	function handleChange(e) {
@@ -36,6 +41,8 @@ function Login() {
 
 	return (
 		<Container>
+			<ToastContainer />
+
 			<Card>
 				<Wrapper>
 					<NaverIconLarge />
