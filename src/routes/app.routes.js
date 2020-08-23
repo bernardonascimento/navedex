@@ -19,7 +19,7 @@ export default (props) => {
 				<Route path="/home" exact component={Home} />
 
 				<Route path="/naver/register" exact component={Naver} />
-				{/* <Route path="/naver/register/:id" exact component={Naver} /> */}
+				<Route path="/naver/register/:id" exact component={Naver} />
 
 				<Route path="*">
 					<Redirect to="/" />

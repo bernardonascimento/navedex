@@ -37,5 +37,5 @@ export const Body = styled.div`
 export const Cards = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	column-gap: 50px;
+	column-gap: 55px;
 `;

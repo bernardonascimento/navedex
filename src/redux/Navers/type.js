@@ -1,0 +1,13 @@
+// Sagas
+export const GETNAVERSSAGA = "GETNAVERSSAGA";
+export const GETNAVERBYIDSAGA = "GETNAVERBYIDSAGA";
+export const POSTNAVERSSAGA = "POSTNAVERSSAGA";
+export const PUTNAVERSAGA = "PUTNAVERSAGA";
+
+// Reducer
+export const GETNAVERS = "GETNAVERS";
+export const GETNAVERBYID = "GETNAVERBYID";
+export const POSTNAVERS = "POSTNAVERS";
+export const PUTNAVER = "PUTNAVER";
+
+export const DELETENAVERS = "DELETENAVERS";

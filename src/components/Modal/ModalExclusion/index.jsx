@@ -5,7 +5,11 @@ import Button from "../../Button";
 
 import { Container, Title, SubTitle, Wrapper, ButtonWrapper } from "./styles";
 
-function ModalExclusion({ isOpenExclude, toggleModalExclude }) {
+function ModalExclusion({
+	isOpenExclude,
+	toggleModalExclude,
+	handleExclusion,
+}) {
 	return (
 		<StyledModal
 			isOpen={isOpenExclude}
@@ -18,11 +22,11 @@ function ModalExclusion({ isOpenExclude, toggleModalExclude }) {
 
 				<Wrapper>
 					<ButtonWrapper>
-						<Button text="Cancelar" outlined />
+						<Button text="Cancelar" outlined onClick={toggleModalExclude} />
 					</ButtonWrapper>
 
 					<ButtonWrapper>
-						<Button text="Excluir" />
+						<Button text="Excluir" onClick={handleExclusion} />
 					</ButtonWrapper>
 				</Wrapper>
 			</Container>

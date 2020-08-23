@@ -2,11 +2,11 @@ import React from "react";
 
 import { Container, Label, Input } from "./styles";
 
-function InputText({ label, placeholder }) {
+function InputText({ label, ...rest }) {
 	return (
 		<Container>
 			<Label>{label}</Label>
-			<Input placeholder={placeholder} />
+			<Input {...rest} />
 		</Container>
 	);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Modal from "styled-react-modal";
 
 import {
@@ -17,12 +18,16 @@ import {
 	EditIcon,
 } from "./styles";
 
-import photo from "../../../assets/photo.jpg";
+import { formatDateToLocaleString } from "../../../utils/global";
 
-function ModalNaver({ isOpen, toggleModal, handleClickExclude }) {
-	function handleEdit() {
-		console.log("delete");
-	}
+function ModalNaver({
+	isOpen,
+	toggleModal,
+	handleClickEdit,
+	handleClickExclude,
+	navers,
+}) {
+	const { show } = navers;
 
 	return (
 		<StyledModal
@@ -32,7 +37,7 @@ function ModalNaver({ isOpen, toggleModal, handleClickExclude }) {
 		>
 			<Container>
 				<AvatarWrapper>
-					<Avatar src={photo} alt="Person photo" />
+					<Avatar src={show.url} alt="Person photo" />
 				</AvatarWrapper>
 				<DataWrapper>
 					<CloseWrapper>
@@ -40,22 +45,22 @@ function ModalNaver({ isOpen, toggleModal, handleClickExclude }) {
 					</CloseWrapper>
 
 					<Description>
-						<Name>Juliano Reis</Name>
-						<SubTitle>Front-end Developer</SubTitle>
+						<Name>{show.name}</Name>
+						<SubTitle>{show.job_role}</SubTitle>
 
 						<Title>Idade</Title>
-						<SubTitle>Lorem Ipsum</SubTitle>
+						<SubTitle>{formatDateToLocaleString(show.birthdate)}</SubTitle>
 
 						<Title>Tempo de empresa</Title>
-						<SubTitle>Lorem Ipsum</SubTitle>
+						<SubTitle>{formatDateToLocaleString(show.admission_date)}</SubTitle>
 
 						<Title>Projetos que participou</Title>
-						<SubTitle>Lorem Ipsum</SubTitle>
+						<SubTitle>{show.project}</SubTitle>
 					</Description>
 
 					<IconWrapper>
 						<DeleteIcon onClick={handleClickExclude} />
-						<EditIcon onClick={handleEdit} />
+						<EditIcon onClick={handleClickEdit} />
 					</IconWrapper>
 				</DataWrapper>
 			</Container>
@@ -63,7 +68,8 @@ function ModalNaver({ isOpen, toggleModal, handleClickExclude }) {
 	);
 }
 
-export default ModalNaver;
+const mapStateToProps = (state) => ({ navers: state.navers });
+export default connect(mapStateToProps)(ModalNaver);
 
 export const StyledModal = Modal.styled`
 	width: 1006px;
