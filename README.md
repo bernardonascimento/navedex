@@ -2,7 +2,7 @@
 
 ### `Deploy`
 
-Acesse esta [url](https://bernardonascimento-navers.netlify.app/).
+Acesse esta [url](https://bernardonascimento-navers.netlify.app/) para visualizar a aplicação rodando na integra.
 
 O projeto foi criado utilizando [Create React App](https://github.com/facebook/create-react-app).
 
