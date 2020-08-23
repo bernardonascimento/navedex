@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import InputText from "../../components/InputText";
 import Button from "../../components/Button";
+import Loader from "../../components/Loader";
 
 import ModalConfirmation from "../../components/Modal/ModalConfirmation";
 
@@ -20,7 +21,12 @@ import {
 	ButtonWrapper,
 } from "./styles";
 
-import { postNavers, putNavers, getNaverById } from "../../redux/Navers/action";
+import {
+	postNavers,
+	putNavers,
+	getNaverById,
+	resetShow,
+} from "../../redux/Navers/action";
 
 import { formatDateToLocaleString } from "../../utils/global";
 
@@ -30,16 +36,18 @@ const initialValues = {
 	birthdate: "",
 	project: "",
 	name: "",
-	url: "test-path/image-test.png",
+	url: "",
 };
 
-function Naver({ history, dispatch, match, navers }) {
+function Naver({ history, dispatch, match, navers, loader }) {
+	const { id } = match.params;
+	const { show } = navers;
+	const { loading } = loader;
+
 	const [isOpen, setIsOpen] = useState(false);
 	const [titleMessage, setTitleMessage] = useState("");
 	const [subTitleMessage, setSubTitleMessage] = useState("");
 	const [form, setForm] = useState(initialValues);
-	const { id } = match.params;
-	const { show } = navers;
 
 	useEffect(() => {
 		if (id) dispatch(getNaverById(id));
@@ -52,15 +60,18 @@ function Naver({ history, dispatch, match, navers }) {
 				admission_date: formatDateToLocaleString(show.admission_date),
 				birthdate: formatDateToLocaleString(show.birthdate),
 			});
+		else setForm(initialValues);
 	}, [show]);
 
-	function toggleModal(e) {
+	function toggleModal() {
 		setIsOpen(false);
 		history.push("/naver");
+		dispatch(resetShow());
 	}
 
 	function handleBack() {
 		history.push("/naver");
+		dispatch(resetShow());
 	}
 
 	function handleChange(e) {
@@ -68,7 +79,7 @@ function Naver({ history, dispatch, match, navers }) {
 		setForm({ ...form, [name]: value });
 	}
 
-	function handleSave(e) {
+	function handleSubmit(e) {
 		e.preventDefault();
 
 		if (id) {
@@ -84,6 +95,8 @@ function Naver({ history, dispatch, match, navers }) {
 		}
 	}
 
+	if (loading) return <Loader />;
+
 	return (
 		<>
 			<Container>
@@ -92,11 +105,11 @@ function Naver({ history, dispatch, match, navers }) {
 						<IconWrapper>
 							<ArrowLeft onClick={handleBack} />
 						</IconWrapper>
-						<Text>Adicionar Naver</Text>
+						<Text>{show.id ? "Editar Naver" : "Adicionar Naver"}</Text>
 					</Header>
 
 					<Body>
-						<Form>
+						<Form onSubmit={handleSubmit}>
 							<InputWrapper>
 								<InputText
 									label="Nome"
@@ -104,6 +117,7 @@ function Naver({ history, dispatch, match, navers }) {
 									name="name"
 									value={form.name}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
@@ -114,6 +128,7 @@ function Naver({ history, dispatch, match, navers }) {
 									name="job_role"
 									value={form.job_role}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
@@ -124,6 +139,7 @@ function Naver({ history, dispatch, match, navers }) {
 									name="birthdate"
 									value={form.birthdate}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
@@ -134,6 +150,7 @@ function Naver({ history, dispatch, match, navers }) {
 									name="admission_date"
 									value={form.admission_date}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
@@ -144,6 +161,7 @@ function Naver({ history, dispatch, match, navers }) {
 									name="project"
 									value={form.project}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
@@ -154,12 +172,13 @@ function Naver({ history, dispatch, match, navers }) {
 									name="url"
 									value={form.url}
 									onChange={handleChange}
+									required
 								/>
 							</InputWrapper>
 
 							<ButtonContainer>
 								<ButtonWrapper>
-									<Button text="Salvar" onClick={handleSave} />
+									<Button text="Salvar" type="submit" />
 								</ButtonWrapper>
 							</ButtonContainer>
 						</Form>
@@ -177,5 +196,8 @@ function Naver({ history, dispatch, match, navers }) {
 	);
 }
 
-const mapStateToProps = (state) => ({ navers: state.navers });
+const mapStateToProps = (state) => ({
+	navers: state.navers,
+	loader: state.loader,
+});
 export default connect(mapStateToProps)(Naver);

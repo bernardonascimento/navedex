@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
+import Loader from "../../components/Loader";
 import Button from "../../components/Button";
 import ModalExclusion from "../../components/Modal/ModalExclusion";
 import ModalConfirmation from "../../components/Modal/ModalConfirmation";
@@ -18,25 +19,35 @@ import {
 	Cards,
 } from "./styles";
 
-import { getNavers, getNaverById } from "../../redux/Navers/action";
+import {
+	getNavers,
+	getNaverById,
+	resetShow,
+	deleteNavers,
+} from "../../redux/Navers/action";
 
-function Home({ history, dispatch, navers }) {
+function Home({ history, dispatch, navers, loader }) {
+	const { loading } = loader;
+	const { index, show } = navers;
+
 	const [isOpen, setIsOpen] = useState(false);
 	const [isOpenConfirme, setIsOpenConfirme] = useState(false);
 	const [isOpenExclude, setIsOpenExclude] = useState(false);
 	const [idSelected, setIdSelected] = useState(null);
 
 	useEffect(() => {
-		dispatch(getNavers());
-	}, [dispatch]);
+		if (index.length <= 0) dispatch(getNavers());
+	}, [dispatch, index]);
 
 	function toggleNaver(id) {
-		dispatch(getNaverById(id));
+		setIdSelected(id);
+		dispatch(getNaverById(id, false));
 		setIsOpen(true);
 	}
 
 	function toggleModal() {
 		setIsOpen(false);
+		dispatch(resetShow());
 	}
 
 	function toggleModalConfirme() {
@@ -63,11 +74,16 @@ function Home({ history, dispatch, navers }) {
 
 	function handleExclusion() {
 		if (idSelected) {
-			console.log("excluido");
+			dispatch(deleteNavers(idSelected));
 			setIsOpenExclude(false);
+
+			if (isOpen) toggleModal();
+
 			setIsOpenConfirme(true);
 		}
 	}
+
+	if (loading) return <Loader />;
 
 	return (
 		<>
@@ -83,7 +99,7 @@ function Home({ history, dispatch, navers }) {
 
 				<Body>
 					<Cards>
-						{navers.index.map((value) => (
+						{index.map((value) => (
 							<Card
 								key={value.id}
 								data={value}
@@ -96,12 +112,15 @@ function Home({ history, dispatch, navers }) {
 				</Body>
 			</Container>
 
-			<ModalNaver
-				isOpen={isOpen}
-				toggleModal={toggleModal}
-				handleClickEdit={handleClickEdit}
-				handleClickExclude={handleClickExclude}
-			/>
+			{show.id && (
+				<ModalNaver
+					isOpen={isOpen}
+					toggleModal={toggleModal}
+					handleClickEdit={() => handleClickEdit(idSelected)}
+					handleClickExclude={() => handleClickExclude(idSelected)}
+				/>
+			)}
+
 			<ModalExclusion
 				isOpenExclude={isOpenExclude}
 				toggleModalExclude={toggleModalExclude}
@@ -117,5 +136,8 @@ function Home({ history, dispatch, navers }) {
 	);
 }
 
-const mapStateToProps = (state) => ({ navers: state.navers });
+const mapStateToProps = (state) => ({
+	navers: state.navers,
+	loader: state.loader,
+});
 export default connect(mapStateToProps)(Home);

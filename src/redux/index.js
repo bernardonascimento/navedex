@@ -3,12 +3,14 @@ import createSagaMiddleware from "redux-saga";
 
 //  Reducers
 import navers from "./Navers/reducer";
+import loader from "./Loader/reducer";
 
 // Sagas
 import NaversSaga from "./Navers/saga";
 
 const reducers = combineReducers({
 	navers,
+	loader,
 });
 
 const sagaMiddleware = createSagaMiddleware();

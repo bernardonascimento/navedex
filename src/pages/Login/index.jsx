@@ -18,25 +18,8 @@ function Login() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// let error = await validate([
-		// 	{ name: "email", value: form.email },
-		// 	{ name: "senha", value: form.senha },
-		// ]);
-
-		// if (error) return;
-
 		const result = await logIn(form);
 		console.log(result);
-
-		// if (Array.isArray(result)) {
-		// 	setEmpresas(result);
-		// 	setOpenDialog(true);
-		// } else {
-		// 	if (result !== "success") {
-		// 		setMessageError(result);
-		// 		setOpen(true);
-		// 	}
-		// }
 	};
 
 	function handleChange(e) {
@@ -51,18 +34,22 @@ function Login() {
 					<NaverIconLarge />
 					<Form onSubmit={handleSubmit}>
 						<InputText
+							type="e-mail"
 							label="E-mail"
 							placeholder="E-mail"
 							name="email"
 							value={form.email}
 							onChange={handleChange}
+							required
 						/>
 						<InputText
+							type="password"
 							label="Senha"
 							placeholder="Senha"
 							name="password"
 							value={form.password}
 							onChange={handleChange}
+							required
 						/>
 						<Button text="Entrar" type="submit" />
 					</Form>
