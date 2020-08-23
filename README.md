@@ -1,5 +1,9 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/06cc765c-bf86-47a4-b5e7-7b99beb0fcdd/deploy-status)](https://app.netlify.com/sites/bernardonascimento-navers/deploys)
 
+### `Deploy`
+
+Acesse esta [url](https://bernardonascimento-navers.netlify.app/).
+
 O projeto foi criado utilizando [Create React App](https://github.com/facebook/create-react-app).
 
 Dentro do diretório do projeto, você pode executar:
