@@ -10,13 +10,18 @@ export const Container = styled.div`
 	flex-direction: column;
 `;
 
-export const CloseWrapper = styled.div`
+export const HeaderWrapper = styled.div`
 	width: 100%;
 	height: 32px;
 	display: flex;
 	justify-content: flex-end;
 
 	padding: 21px 21px 0 0;
+`;
+
+export const CloseWrapper = styled.div`
+	height: 28px;
+	width: 28px;
 	cursor: pointer;
 `;
 

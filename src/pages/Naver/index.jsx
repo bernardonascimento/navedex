@@ -28,7 +28,7 @@ import {
 	resetShow,
 } from "../../redux/Navers/action";
 
-import { formatDateToLocaleString } from "../../utils/global";
+import { formatDateToInput } from "../../utils/global";
 
 const initialValues = {
 	job_role: "",
@@ -57,8 +57,8 @@ function Naver({ history, dispatch, match, navers, loader }) {
 		if (show.id)
 			setForm({
 				...show,
-				admission_date: formatDateToLocaleString(show.admission_date),
-				birthdate: formatDateToLocaleString(show.birthdate),
+				admission_date: formatDateToInput(show.admission_date),
+				birthdate: formatDateToInput(show.birthdate),
 			});
 		else setForm(initialValues);
 	}, [show]);
@@ -134,6 +134,7 @@ function Naver({ history, dispatch, match, navers, loader }) {
 
 							<InputWrapper>
 								<InputText
+									type="date"
 									label="Idade"
 									placeholder="Idade"
 									name="birthdate"
@@ -145,6 +146,7 @@ function Naver({ history, dispatch, match, navers, loader }) {
 
 							<InputWrapper>
 								<InputText
+									type="date"
 									label="Tempo de empresa"
 									placeholder="Tempo de empresa"
 									name="admission_date"

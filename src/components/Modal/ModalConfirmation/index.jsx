@@ -3,6 +3,7 @@ import Modal from "styled-react-modal";
 
 import {
 	Container,
+	HeaderWrapper,
 	CloseWrapper,
 	CloseIcon,
 	Wrapper,
@@ -23,9 +24,11 @@ function ModalConfirmation({
 			onEscapeKeydown={toggleModal}
 		>
 			<Container>
-				<CloseWrapper>
-					<CloseIcon onClick={toggleModal} />
-				</CloseWrapper>
+				<HeaderWrapper>
+					<CloseWrapper>
+						<CloseIcon onClick={toggleModal} />
+					</CloseWrapper>
+				</HeaderWrapper>
 
 				<Wrapper>
 					<Title>{titleMessage}</Title>

@@ -8,4 +8,13 @@ const formatDateToLocaleString = (str) => {
 	).slice(-2)}/${data.getUTCFullYear()}`;
 };
 
-export { formatDateToLocaleString };
+const formatDateToInput = (str) => {
+	if (!str) return "";
+	let data = new Date(str);
+
+	return `${data.getUTCFullYear()}-${("00" + (data.getUTCMonth() + 1)).slice(
+		-2
+	)}-${("00" + data.getUTCDate()).slice(-2)}`;
+};
+
+export { formatDateToLocaleString, formatDateToInput };

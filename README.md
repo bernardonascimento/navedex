@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06cc765c-bf86-47a4-b5e7-7b99beb0fcdd/deploy-status)](https://app.netlify.com/sites/bernardonascimento-navers/deploys)
 
-## Available Scripts
+O projeto foi criado utilizando [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+Dentro do diretório do projeto, você pode executar:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para iniciar o servidor em desenvolvimento <br />
+Abra [http://localhost:3000](http://localhost:3000) em seu navegador.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Ferramentas utilizadas
 
-### `yarn test`
+`axios` realizar chamadas HTTP <br />
+`react-router-dom` para controlar as rotas <br />
+`styled-components` utilizado para estruturação do CSS de todo o layout <br />
+`styled-icons` todos os ícones vindos do material <br />  
+`react-loader-spinner` criação do loader para carregamento das requisições <br />
+`react-toastify` utilizado para mensagem de erro na página de Login <br />
+`styled-react-modal` criação dos Modais da aplicação.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Gerenciamento de estado
 
-### `yarn build`
+Para gerenciar o estado da aplicação, foi utilizado o `ContextAPI`, `Redux` e `Redux-Saga`, o intuito é para demonstrar as minhas habilidades no uso das duas ferramentas.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`ContextAPI` utilizado no controle das rotas e na página de Login <br />
+`Redux` utilizado no restante da aplicação para controlar o estado e chamadas assíncronas utilizando o middleware `Redux-Saga`.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Layout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[x] Layout de acordo com as telas do [figma](https://www.figma.com/file/II8UDFm2uJFZaD0FOPcinP/Teste-Front-End).
 
-### `yarn eject`
+### Funcionalidades aplicadas
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[x] A web app deverá possuir um fluxo de autenticação, onde o usuário só pode acessar as telas internas do sistema (listagem, formulários) passando pela tela de login com as credenciais criadas previamente via Postman.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[x] Para realizar o login, você deve usar a request de users/login disponível no postman. Essa request retornará um token do tipo Bearer que deverá ser utilizado no header das próximas requisições.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[x] A página inicial da aplicação tera uma lista dos navers.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[x] Para listar os navers, você deve usar a request de navers/index disponível no postman.
 
-## Learn More
+[x] Ao clicar em algum naver da listagem, o usuário terá uma visualização completa das informações do mesmo.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[x] Para apresentar um único naver, você deve usar a request de navers/show disponível no postman.
+[x] Para excluir um naver, você deve usar a request de navers/delete disponível no postman.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[x] O usuário precisa ter a possibilidade de criar um novo naver ou editar um já existente.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[x] Para criar um naver, você deve usar a request de navers/create disponível no postman. Para editar um naver, você deve usar a request de navers/update disponível no postman.

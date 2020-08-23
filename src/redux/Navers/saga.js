@@ -15,6 +15,7 @@ import {
 } from "./type";
 
 import { showLoading, hideLoading } from "../Loader/action";
+import { formatDateToLocaleString } from "../../utils/global";
 
 const endpoint = "navers";
 
@@ -49,7 +50,13 @@ function* getNaverById({ params }) {
 
 function* postNavers({ data }) {
 	try {
-		const response = yield call(API.post, endpoint, data);
+		let body = {
+			...data,
+			admission_date: formatDateToLocaleString(data.admission_date),
+			birthdate: formatDateToLocaleString(data.admission_date),
+		};
+
+		const response = yield call(API.post, endpoint, body);
 
 		let payload = response.data;
 		yield put({ type: POSTNAVERS, payload });
@@ -64,7 +71,13 @@ function* putNavers({ data }) {
 		delete data["id"];
 		delete data["user_id"];
 
-		const response = yield call(API.put, `${endpoint}/${id}`, data);
+		let body = {
+			...data,
+			admission_date: formatDateToLocaleString(data.admission_date),
+			birthdate: formatDateToLocaleString(data.admission_date),
+		};
+
+		const response = yield call(API.put, `${endpoint}/${id}`, body);
 
 		let payload = response.data;
 		yield put({ type: PUTNAVER, payload });
