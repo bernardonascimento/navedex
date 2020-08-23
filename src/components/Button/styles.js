@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const ButtonText = styled.button`
-	background: ${(props) => (props.outlined ? "transparent" : "var(--gray)")};
+	background: ${(props) => {
+		if (props.outlined) return "transparent";
+		if (props.disabled) return "#CCCCCC";
+		else return "var(--gray)";
+	}};
+
 	color: ${(props) => (props.outlined ? "var(--gray)" : "var(--primary)")};
 	border: ${(props) => (props.outlined ? "1px solid var(--gray)" : "none")};
 

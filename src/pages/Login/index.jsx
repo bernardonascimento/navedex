@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { NaverIconLarge } from "../../components/Logo/NaverIconLarge";
 
@@ -10,13 +10,20 @@ import { Container, Card, Wrapper, Form } from "./styles";
 
 function Login() {
 	const { logIn } = useContext(AuthContext);
+	const [disabled, setDisabled] = useState(false);
 	const [form, setForm] = useState({
 		email: "",
 		password: "",
 	});
 
+	useEffect(() => {
+		setDisabled(false);
+	}, []);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		setDisabled(true);
 
 		const result = await logIn(form);
 		console.log(result);
@@ -51,7 +58,7 @@ function Login() {
 							onChange={handleChange}
 							required
 						/>
-						<Button text="Entrar" type="submit" />
+						<Button text="Entrar" type="submit" disabled={disabled} />
 					</Form>
 				</Wrapper>
 			</Card>
